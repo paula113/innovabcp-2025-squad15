@@ -1,11 +1,14 @@
+import ProfileForm from "../Features/ProfileForm/default";
 import MainLayout from "../layouts/MainLayout";
 
 const Home = () => {
-  const cardDetails = true
+  const showForm = true
 
   const getDetailsView = () => {
-    if (!cardDetails) return null;
-    return <h1>HOLA Mundo</h1>;
+    if (!showForm) return null;
+    return <>
+    <ProfileForm />
+    </>;
   };
 
   return (
