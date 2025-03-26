@@ -2,7 +2,7 @@ const MainLayout = ({ children }) => {
   return (
     <div className="">
       <header className="">
-        <div>Where in the world?</div>
+        <div>TOP BAR </div>
       </header>
       <main className="">
         {children}
