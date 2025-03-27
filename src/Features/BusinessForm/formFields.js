@@ -62,10 +62,20 @@ export const formFields = [
     type: "text",
     validation: { required: "Campo obligatorio" }
   },
-  {
-    name: "website",
-    label: "¿Tienes un página web?",
-    type: "url",
-    validation: { pattern: { value: /https?:\/\/.+/, message: "URL inválida" } }
-  },
+  // {
+  //   name: "website",
+  //   label: "¿Tienes un página web?",
+  //   type: "url",
+  //   validation: { pattern: { value: /https?:\/\/.+/, message: "URL inválida" } }
+  // },
 ];
+
+export const formFieldsSecondStep = [
+  {
+    name: "businessAdmin",
+    label: "¿Cómo manejas la administración de los costos y gastos de tu negocio?",
+    type: "text",
+    textLimit: '200',
+    validation: { required: "Campo obligatorio" }
+  },
+]

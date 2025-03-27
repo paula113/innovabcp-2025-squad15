@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
-import { useDropzone } from "react-dropzone";
-import { Container, Typography, IconButton, Box, Button, Paper } from "@mui/material";
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { Container, Typography } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 
 import Form from "../../Components/Form/default";
-import { formFields } from "./formFields";
+import { formFields, formFieldsSecondStep } from "./formFields";
+import HorizontalLinearStepper from "../../Components/VerticalStepper/default";
+import Dropzone from "../../Components/DropoutZone/default";
+import DynamicList from "../../Components/DinamicList/default";
+import { useFieldArray, useForm } from "react-hook-form";
 
 const postData = async (data) => {
   return new Promise((resolve) => {
@@ -16,100 +18,99 @@ const postData = async (data) => {
     }, 2000);
   });
 };
-
 const BusinessForm = () => {
   const [files, setFiles] = useState([]);
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: {
-      "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"],
-      "application/pdf": [".pdf"],
-      "application/vnd.ms-excel": [".xls"],
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": [".xlsx"],
-      "text/csv": [".csv"],
-    },
-    multiple: true,
-    onDrop: (acceptedFiles) => {
-      setFiles([...files, ...acceptedFiles]);
+  const [formData, setFormData] = useState({});
+  
+  const { control, register, reset, getValues } = useForm({
+    defaultValues: {
+      userProfile: '',
+      incomeStream: '',
+      businessAge: '',
+      businessEvolution: '',
+      incomeAverage: '',
+      businessPercentage: '',
+      extraIncomePercentage: '',
+      businessAdmin: ""
     },
   });
-  
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "incomeSources",
+  });
 
   const mutation = useMutation({
     mutationFn: postData,
     onSuccess: () => {
       alert("Formulario enviado con éxito");
+      reset();
       setFiles([]);
+      setFormData({});
     },
   });
 
-  const handleFormSubmit = (data) => {
-    const formData = {
-      ...data,
-      files: files.map(file => file.name),
+  // // Guardar datos por paso correctamente
+  // const handleStepSubmit = () => {
+  //   const currentData = getValues();
+  //   console.log("🚀 ~ handleStepSubmit ~ currentData:", currentData)
+    
+  //   setFormData((prev) => ({ ...prev, ...currentData }));
+  // };
+
+  // Enviar datos finales
+  const handleFinalSubmit = () => {
+    
+    const finalData = {
+      ...formData,
+      ...getValues(),
+      files: files.map((file) => file.name),
     };
     
-    mutation.mutate(formData);
-  };
-  
-  const getUploadFilesView = () => {
-
-    const getInputView = () => (
-      <Paper
-          {...getRootProps()}
-          sx={{
-            p: 3,
-            textAlign: "center",
-            border: "2px dashed #ccc",
-            backgroundColor: isDragActive ? "#161622bf" : "#161622d6",
-            cursor: "pointer",
-            "&:hover": { borderColor: "#3f51b5" },
-          }}
-        >
-          <input {...getInputProps()} />
-          <CloudUploadIcon fontSize="large" color="text" />
-          <Typography variant="body1" color="text">
-            {isDragActive ? "Suelta los archivos aquí..." : "Arrastra y suelta archivos aquí o haz clic para seleccionar"}
-          </Typography>
-        </Paper>
-    );
-
-    const getFilesDetailsView = () => {
-      if (files.length === 0) return null
-
-      return (
-        <Box sx={{ mt: 2 }}>
-            <Typography variant="subtitle1">Archivos seleccionados:</Typography>
-            <ul>
-              {files.map((file, index) => (
-                <li key={index}>{file.name}</li>
-              ))}
-            </ul>
-          </Box>
-    )}
-
-    return (
-      <>
-        <Typography variant="h6" align="left" sx={{ mt: 3 }}>Subir archivos</Typography>
-        {getInputView()}
-        {getFilesDetailsView()}
-      </>
-    );
+    console.log("Datos enviados: Mitate", finalData);
+    mutation.mutate(finalData);
   };
 
-  const buttonText = mutation.isLoading ? "Enviando..." : "Registrar Negocio";
-  
+  // Paso 1: Información del negocio
+  const getBusinessInfoView = () => (
+    <Form fields={formFields} showButton={false}>
+      <DynamicList 
+        fields={fields} 
+        register={register} 
+        append={append} 
+        remove={remove} 
+        title="Presencia Digital" 
+        name="digitalWebs" 
+        options={['Página web', 'Mercado en libre']} 
+      />
+    </Form>
+  );
+
+  // Paso 2: Carga de archivos
+  const getUploadFilesView = () => (
+    <>
+      <Form fields={formFieldsSecondStep} showButton={false} />
+      <Dropzone files={files} setFiles={setFiles} />
+    </>
+  );
+
+  // Paso 3: Revisión final y envío
+  const getFinalReviewView = () => (
+    <>
+      <Typography variant="h6">Revisión Final</Typography>
+      <Typography>Verifica la información antes de enviar.</Typography>
+      <button onClick={handleFinalSubmit} >
+        {mutation.isLoading ? "Enviando..." : "Enviar"}
+      </button>
+    </>
+  );
+
+  const steps = ["Ingresos", "Administración", "Meta"];
+  const stepContents = [getBusinessInfoView(), getUploadFilesView(), getFinalReviewView()];
 
   return (
     <Container maxWidth="sm" sx={{ mt: 5 }}>
-     <Typography variant="h4" sx={{ mb: 2}} >Queremos conocerte más</Typography>
-      <Form 
-        fields={formFields} 
-        onSubmit={handleFormSubmit} 
-        buttonText={buttonText}
-       >
-        {getUploadFilesView()}
-      </Form>
+      <HorizontalLinearStepper stepContents={stepContents} steps={steps} handleOnCLick={handleFinalSubmit} disabled={mutation.isLoading}/>
     </Container>
   );
 };

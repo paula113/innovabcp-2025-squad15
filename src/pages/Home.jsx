@@ -19,17 +19,17 @@ const Home = () => {
   //   return null;
   // }
 
-  const modalContent = {
-    titulo: "BCP",
-    descripcion: "Estoy aqui para ayudarte",
-    showButtom: true,
-    buttomText: "Continuar",
-  };
+  // const modalContent = {
+  //   titulo: "BCP",
+  //   descripcion: "Estoy aqui para ayudarte",
+  //   showButtom: true,
+  //   buttomText: "Continuar",
+  // };
 
   return (
     <MainLayout>
       <Typography variant="h4">{`Bienvenida ${user?.name || ''}`} 🎉</Typography>
-      <BasicModal modalContent={modalContent} />
+      {/* <BasicModal modalContent={modalContent} /> */}
       <BusinessForm />
       <Button variant="contained" color="secondary" sx={{ mt: 3 }} onClick={handleLogout}>
         Cerrar sesión

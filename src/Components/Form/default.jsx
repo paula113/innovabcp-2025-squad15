@@ -3,12 +3,21 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Box, TextField, Button, InputAdornment, Select, MenuItem, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Slider } from "@mui/material";
 
-const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null }) => {
+const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null, showButton = true }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const getSubmitButton = () => {
+    if (!showButton) return null;
+      return (
+      <Button type="submit" variant="contained" color="secondary">
+        {buttonText}
+      </Button>
+    )
+  }
 
   return (
     <Box
@@ -23,11 +32,13 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
       }}
     >
       {fields.map(({ name, label, type, options, validation, min, max, textLimit }) => {
+        console.log(name);
+        
         switch (type) {
           case "radioButton":
             return (
               <FormControl key={name} error={!!errors[name]}>
-                <FormLabel color="text" sx={{marginBottom: '24px'}}>{label}</FormLabel>
+                <FormLabel color="text" align="left" sx={{marginBottom: '24px'}}>{label}</FormLabel>
                 <RadioGroup row {...register(name, validation)} 
                  
                   sx={{
@@ -55,7 +66,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
           case "select":
             return (
               <FormControl key={name} fullWidth>
-                <FormLabel color="text" align="left" sx={{ marginBottom: 2 }}>{label}</FormLabel>
+                <FormLabel color="text" align="left" sx={{ marginBottom: 0 }}>{label}</FormLabel>
                 <Select
                   {...register(name, validation)}
                   variant="standard"
@@ -66,6 +77,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
                         backgroundColor: "background.lightBlue", // Change background color
                         boxShadow: "none", // Remove shadow
                         borderRadius: 2, // Optional: rounded corners
+                        mt: 0
                       },
                     },
                   }}
@@ -103,7 +115,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
                error={!!errors[name]}
                helperText={errors[name]?.message}
                fullWidth
-              
+              variant="standard"
                 InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
               />
             </FormControl>
@@ -190,9 +202,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
 
       {children}
 
-      <Button type="submit" variant="contained" color="secondary">
-        {buttonText}
-      </Button>
+      {getSubmitButton()}
     </Box>
   );
 };
