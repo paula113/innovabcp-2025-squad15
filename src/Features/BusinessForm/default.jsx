@@ -61,14 +61,14 @@ const BusinessForm = () => {
             p: 3,
             textAlign: "center",
             border: "2px dashed #ccc",
-            backgroundColor: isDragActive ? "#f0f0f0" : "#fafafa",
+            backgroundColor: isDragActive ? "#161622bf" : "#161622d6",
             cursor: "pointer",
             "&:hover": { borderColor: "#3f51b5" },
           }}
         >
           <input {...getInputProps()} />
-          <CloudUploadIcon fontSize="large" />
-          <Typography variant="body1">
+          <CloudUploadIcon fontSize="large" color="text" />
+          <Typography variant="body1" color="text">
             {isDragActive ? "Suelta los archivos aquí..." : "Arrastra y suelta archivos aquí o haz clic para seleccionar"}
           </Typography>
         </Paper>

@@ -1,11 +1,11 @@
 import { Container, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../Context/AuthContext";
+// import { useAuth } from "../../Context/AuthContext";
 import Form from "../../Components/Form/default";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
   const handleFormSubmit = (data) => {
     console.log("Login data:", data);
@@ -13,12 +13,12 @@ const LoginForm = () => {
     // Simulating authentication
     const storedUser = JSON.parse(localStorage.getItem("user"));
     console.log("🚀 ~ handleFormSubmit ~ storedUser:", storedUser, data)
-    if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
-      login(storedUser);
-      navigate("/");
-    } else {
-      alert("Invalid credentials");
-    }
+    navigate("/");
+    // if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
+    //   // login(storedUser);
+    // } else {
+    //   alert("Invalid credentials");
+    // }
   };
 
   const formFields = [
