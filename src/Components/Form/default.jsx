@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { TextField, Button, Box } from "@mui/material";
 
-const Form = ({ fields, onSubmit, buttonText = "Enviar" }) => {
+const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null }) => {
   const {
     register,
     handleSubmit,
@@ -31,6 +31,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar" }) => {
           fullWidth
         />
       ))}
+      {children}
       <Button type="submit" variant="contained" color="primary">
         {buttonText}
       </Button>
