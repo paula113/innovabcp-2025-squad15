@@ -4,6 +4,7 @@ import { Box, Button, Container, Typography } from "@mui/material";
 //import mainLogo from "../../assets/bcp-logo.png";
 import mainLogo from "../assets/bcp-logo.png";
 import mainsonLogo from "../assets/mainson-logo.png";
+import { useNavigate } from "react-router-dom";
 
 const HomeResults = () => {
   const respuesta = {
@@ -11,8 +12,9 @@ const HomeResults = () => {
     solucion:
       "Queremos conocerte para ayudarte a mejorar tu score crediticio y puedas obtener lo mas pronto posible tu crédito hipotecario",
   };
+  const navigate = useNavigate();
   const handleSubmit = () => {
-    //Router.push("/")
+    navigate("/about-credit");
   };
 
   return (
