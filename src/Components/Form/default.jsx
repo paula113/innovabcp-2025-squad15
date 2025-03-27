@@ -9,7 +9,17 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar" }) => {
   } = useForm();
 
   return (
-    <Box component="form" onSubmit={handleSubmit(onSubmit)} sx={{ display: "flex", flexDirection: "column", gap: 2, width: "100%", mb: 4 }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit(onSubmit)}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        width: "100%",
+        mb: 4,
+      }}
+    >
       {fields.map(({ name, label, type, validation }) => (
         <TextField
           key={name}
