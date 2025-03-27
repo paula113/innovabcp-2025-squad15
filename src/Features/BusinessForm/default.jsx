@@ -48,7 +48,7 @@ const BusinessForm = () => {
       ...data,
       files: files.map(file => file.name),
     };
-  
+    
     mutation.mutate(formData);
   };
   

@@ -1,14 +1,16 @@
+import { Container, Box } from "@mui/material";
+import Header from "../Components/Header/header";
+// import Footer from "./Footer";
+
 const MainLayout = ({ children }) => {
   return (
-    <div className="">
-      <header className="">
-        <div>TOP BAR </div>
-      </header>
-      <main className="">
+    <Box display="flex" flexDirection="column" minHeight="100vh" sx={{ backgroundColor: "primary.main",}}>
+      <Header />
+      <Container component="main" sx={{ flexGrow: 1, mt: 3 }}      >
         {children}
-      </main>
-      <footer className="">Footer</footer>
-    </div>
+      </Container>
+      {/* <Footer /> */}
+    </Box>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { TextField, Button, Box } from "@mui/material";
 
-const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null }) => {
+const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null }) => {
   const {
     register,
     handleSubmit,
@@ -29,10 +29,20 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null }) => {
           error={!!errors[name]}
           helperText={errors[name]?.message}
           fullWidth
+          variant="standard"
+          slotProps={ icon && {
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  {icon}
+                </InputAdornment>
+              ),
+            },
+          }}
         />
       ))}
       {children}
-      <Button type="submit" variant="contained" color="primary">
+      <Button type="submit" variant="contained" color="secondary">
         {buttonText}
       </Button>
     </Box>
