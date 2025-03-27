@@ -1,3 +1,4 @@
+import React from "react";
 import RegisterFrom from "../Features/RegisterFrom/default";
 import MainLayout from "../layouts/MainLayout";
 

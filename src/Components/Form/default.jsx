@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
+import React from "react";
 import { useForm } from "react-hook-form";
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, InputAdornment } from "@mui/material";
 
 const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null }) => {
   const {

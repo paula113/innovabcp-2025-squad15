@@ -1,3 +1,4 @@
+import React from "react";
 import { AppBar, Toolbar, Box } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import mainLogo from "../../assets/bcp-logo.png";
