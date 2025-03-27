@@ -31,6 +31,7 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'object-curly-newline': ['error', { multiline: true, consistent: true }],
     },
   },
 ]

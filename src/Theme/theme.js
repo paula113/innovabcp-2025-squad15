@@ -8,9 +8,12 @@ const theme = createTheme({
     secondary: {
       main: "#03A673", // Pink
     },
+    background: {
+      lightBlue: '#1e1e2d'
+    },
     text: {
       primary: "#f1f1f1", // Dark gray for main text
-      secondary: "#fff", // Lighter gray for secondary text
+      secondary: "#a2a2a7", // Lighter gray for secondary text
     },
   },
   typography: {
@@ -18,6 +21,7 @@ const theme = createTheme({
     button: {
       textTransform: "none",
     },
+    marginBottom: '24px'
   },
   components: {
     MuiInput: {
