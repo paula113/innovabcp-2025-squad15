@@ -28,10 +28,17 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <Typography variant="h4">{`Bienvenida ${user?.name || ''}`} 🎉</Typography>
+      <Typography variant="h4">
+        {`Bienvenida ${user?.name || ""}`} 🎉
+      </Typography>
       <BasicModal modalContent={modalContent} />
       <BusinessForm />
-      <Button variant="contained" color="secondary" sx={{ mt: 3 }} onClick={handleLogout}>
+      <Button
+        variant="contained"
+        color="secondary"
+        sx={{ mt: 3 }}
+        onClick={handleLogout}
+      >
         Cerrar sesión
       </Button>
     </MainLayout>

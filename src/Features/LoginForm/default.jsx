@@ -13,7 +13,7 @@ const LoginForm = () => {
 
     // Simulating authentication
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    console.log("🚀 ~ handleFormSubmit ~ storedUser:", storedUser, data)
+    console.log("🚀 ~ handleFormSubmit ~ storedUser:", storedUser, data);
     navigate("/");
     // if (storedUser && storedUser.email === data.email && storedUser.password === data.password) {
     //   // login(storedUser);
@@ -23,8 +23,18 @@ const LoginForm = () => {
   };
 
   const formFields = [
-    { name: "email", label: "Correo", type: "email", validation: { required: "El correo es obligatorio" } },
-    { name: "password", label: "Contraseña", type: "password", validation: { required: "La contraseña es obligatoria" } },
+    {
+      name: "email",
+      label: "Correo",
+      type: "email",
+      validation: { required: "El correo es obligatorio" },
+    },
+    {
+      name: "password",
+      label: "Contraseña",
+      type: "password",
+      validation: { required: "La contraseña es obligatoria" },
+    },
   ];
 
   return (
@@ -32,10 +42,14 @@ const LoginForm = () => {
       <Typography variant="h4" gutterBottom>
         Iniciar Sesión
       </Typography>
-      <Form fields={formFields} onSubmit={handleFormSubmit} buttonText="Ingresar" />
-        <Typography variant="button" sx={{ m: 5 }} gutterBottom>
-          <Link to="/Register">Registrar</Link>
-        </Typography>
+      <Form
+        fields={formFields}
+        onSubmit={handleFormSubmit}
+        buttonText="Ingresar"
+      />
+      <Typography variant="button" sx={{ m: 5 }} gutterBottom>
+        <Link to="/Register">Registrar</Link>
+      </Typography>
     </Container>
   );
 };
