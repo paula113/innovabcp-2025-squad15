@@ -14,17 +14,17 @@ const DashboardPage = () => {
     navigate("/login");
   };
 
+  // if (!user) {
+  //   navigate("/register");
+  //   return null;
+  // }
+
   const modalContent = {
     titulo: "BCP",
     descripcion: "Estoy aqui para ayudarte",
     showButtom: true,
     buttomText: "Continuar",
   };
-  // if (!user) {
-  //   navigate("/register");
-  //   return null;
-  // }
-
 
   return (
     <MainLayout>
