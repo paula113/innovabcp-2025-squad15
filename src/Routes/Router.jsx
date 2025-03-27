@@ -7,33 +7,35 @@ import Register from "../pages/Register";
 import { AuthProvider } from "../Context/AuthContext";
 import Logros from "../pages/Logros";
 import AboutUser from "../pages/AboutUser";
+import HomeResults from "../pages/HomeResults";
 
 const RouterApp = () => (
-      <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logros" element={<Logros />} /> {/* Nueva ruta */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Home />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/about-credit"
-            element={
-              <ProtectedRoute>
-                <AboutUser />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </Router>
-    </AuthProvider>
+  <AuthProvider>
+    <Router>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logros" element={<Logros />} />
+        <Route path="/home" element={<HomeResults />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about-credit"
+          element={
+            <ProtectedRoute>
+              <AboutUser />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
+  </AuthProvider>
 );
 
 export default RouterApp;
