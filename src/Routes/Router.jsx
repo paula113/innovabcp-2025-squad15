@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProtectedRoute from './ProtectedRoute';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Register from '../pages/Register';
+import ProtectedRoute from "./ProtectedRoute";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
 import { AuthProvider } from "../Context/AuthContext";
+import Logros from "../pages/Logros";
 import AboutUser from "../pages/AboutUser";
 
 const RouterApp = () => (
@@ -13,6 +14,7 @@ const RouterApp = () => (
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logros" element={<Logros />} /> {/* Nueva ruta */}
           <Route
             path="/"
             element={
@@ -35,4 +37,3 @@ const RouterApp = () => (
 );
 
 export default RouterApp;
-
