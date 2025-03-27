@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
+import React from "react";
 import { useForm } from "react-hook-form";
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, InputAdornment } from "@mui/material";
 
-const Form = ({ fields, onSubmit, buttonText = "Enviar" }) => {
+const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null }) => {
   const {
     register,
     handleSubmit,
@@ -29,9 +31,20 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar" }) => {
           error={!!errors[name]}
           helperText={errors[name]?.message}
           fullWidth
+          variant="standard"
+          slotProps={ icon && {
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  {icon}
+                </InputAdornment>
+              ),
+            },
+          }}
         />
       ))}
-      <Button type="submit" variant="contained" color="primary">
+      {children}
+      <Button type="submit" variant="contained" color="secondary">
         {buttonText}
       </Button>
     </Box>
