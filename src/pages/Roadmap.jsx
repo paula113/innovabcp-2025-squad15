@@ -5,7 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import BasicModal from "../components/Modal/default";
 import BusinessForm from "../features/BusinessForm/default";
 
-const Home = () => {
+const Roadmap = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -27,7 +27,7 @@ const Home = () => {
   // };
 
   return (
-    <MainLayout>
+    <MainLayout showGoal>
       <Typography variant="h4">{`Bienvenida ${user?.name || ''}`} 🎉</Typography>
       {/* <BasicModal modalContent={modalContent} /> */}
       {/* <BusinessForm /> */}
@@ -43,4 +43,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Roadmap;
