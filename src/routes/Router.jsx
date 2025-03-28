@@ -10,7 +10,7 @@ import NextSteps from '../pages/NextSteps';
 import { default as Register, default as SignUp } from '../pages/SignUp';
 import ProtectedRoute from './ProtectedRoute';
 import PlanCard from '../pages/PlanCard';
-import Recommendations from '../pages/Recomendations';
+import Recommendations from '../pages/Recommendations';
 
 const RouterApp = () => (
   <AuthProvider>
@@ -30,7 +30,7 @@ const RouterApp = () => (
         <Route path='/achievements' element={<Achievements />} />
         <Route path='/diagnosis' element={<CreditEvaluation />} />
         <Route path='/plan' element={<PlanCard />} />
-        <Route path='/recommendations'element={<Recommendations />} />
+        <Route path='/recommendations' element={<Recommendations />} />
         <Route
           path='/'
           element={
