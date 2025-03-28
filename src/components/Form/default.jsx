@@ -98,7 +98,7 @@ const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showBu
                         backgroundColor: '#1e1e2d',
                         width: '48%',
                         margin: '0px',
-                        // "&:hover": { borderColor: "secondary.main"},
+                        "&:hover": { borderColor: "secondary.main"},
                       }}
                       />
                     ))}
