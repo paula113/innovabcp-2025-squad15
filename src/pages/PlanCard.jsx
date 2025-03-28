@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
 import MainLayout from '../layouts/MainLayout';
+import videoImage from '../assets/image-video.png';
 
 const PlanCard = () => {
   return (
@@ -35,7 +36,7 @@ const PlanCard = () => {
           <Box
             className='plan-card__video'
             sx={{
-              backgroundImage: "url('src/assets/image-video.png')",
+              backgroundImage: `url(${videoImage})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
