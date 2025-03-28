@@ -2,7 +2,7 @@ import { Email, PhoneAndroid } from '@mui/icons-material';
 import PersonIcon from '@mui/icons-material/Person';
 import { Box, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import loader from '../../assets/loader.svg';
 import Form from '../../components/Form/default';
 
@@ -89,9 +89,6 @@ const SignUpForm = () => {
     return (
       <>
         <Form fields={formFields} onSubmit={handleFormSubmit} buttonText='Registrar' />
-        <Typography variant='button' sx={{ m: 5 }} gutterBottom>
-          <Link to='/login'>Login</Link>
-        </Typography>
       </>
     );
   };
