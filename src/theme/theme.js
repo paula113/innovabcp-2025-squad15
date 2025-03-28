@@ -43,7 +43,7 @@ const theme = createTheme({
           padding: '16px',
           height: '54px',
           '&:hover': {
-            backgroundColor: '#3700b3', // Color al pasar el mouse
+            backgroundColor: '#1e1e2d', // Color al pasar el mouse
           },
         },
       },
@@ -66,7 +66,7 @@ const theme = createTheme({
         root: {
           color: 'gray', // Default icon color
           '&.Mui-active': {
-            color: 'blue', // Active icon
+            color: 'transparent', // Active icon
           },
           '&.Mui-completed': {
             color: '#03A673', // Completed icon

@@ -16,7 +16,7 @@ const UserProfile = () => {
     // Definición de vistas para cada paso del formulario
     const getBusinessInfoView = () => (
       <>
-        <Typography variant="h4" align="center" mb={4}>{'¿Qué ingresos tienes?'}</Typography>
+        <Typography variant="h4" align="center" mb={4}>{'Cuales son tus ingresos?'}</Typography>
         <Form  fields={formFields} showButton={false}/>
       </>
     );
