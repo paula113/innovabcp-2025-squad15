@@ -19,7 +19,7 @@ const RegisterFrom = () => {
       setIsLoading(false);
       localStorage.setItem("user", JSON.stringify(data));
       navigate("/home");
-    }, 5000);
+    }, 3000);
   };
 
   const formFields = [
@@ -69,17 +69,19 @@ const RegisterFrom = () => {
     if (!isLoading) return null;
 
     return (
-      <Box
-        component="img"
-        src={loader}
-        alt="BCP Logo"
-        className="rotating-svg"
-        sx={{ height: 100 }}
-      />
+      <div className="loader-wrapper">
+        <Box
+          component="img"
+          src={loader}
+          alt="BCP Logo"
+          className="rotating-svg"
+          sx={{ height: 230 }}
+        />
+      </div>
     );
   };
 
-  const geFormView = () => {
+  const getFormView = () => {
     if (isLoading) return null;
 
     return (
@@ -108,7 +110,7 @@ const RegisterFrom = () => {
   return (
     <Container maxWidth="sm" sx={{ mt: 5, mb: 4 }}>
       {getLoaderView()}
-      {geFormView()}
+      {getFormView()}
     </Container>
   );
 };
