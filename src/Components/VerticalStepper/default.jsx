@@ -38,11 +38,11 @@ export default function HorizontalLinearStepper({ stepContents, steps, showGoBac
         <StepLabel
           sx={{
             '& .MuiStepLabel-label': {
-              color: isActive ? 'blue' : isCompleted ? 'green' : 'gray', // Label color
+              color: isActive ? 'blue' : isCompleted ? '#03A673' : 'gray', // Label color
               fontWeight: isActive ? 'bold' : 'normal',
             },
             '& .MuiStepIcon-root': {
-              color: isActive ? 'blue' : isCompleted ? 'green' : 'gray', // Icon color
+              color: isActive ? 'blue' : isCompleted ? '#03A673' : 'gray', // Icon color
             },
           }}
         >
@@ -95,8 +95,8 @@ const CompletionMessage = ({ onReset }) => (
 const NavigationControls = ({ activeStep, isStepOptional, onBack, onNext, onSkip, steps, showGoBack }) => (
   <Box>
     <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-      {showGoBack && <Button color="inherit" disabled={activeStep === 0} onClick={onBack} sx={{ mr: 1 }}>
-        Atrás
+      {/* {showGoBack && <Button color="inherit" disabled={activeStep === 0} onClick={onBack} sx={{ mr: 1 }}>
+        Atrás 
       </Button>}
       <Box sx={{ flex: "1 1 auto" }} />
       {/* {isStepOptional(activeStep) && (
@@ -105,7 +105,7 @@ const NavigationControls = ({ activeStep, isStepOptional, onBack, onNext, onSkip
         </Button>
       )} */}
 
-      {activeStep !== steps.length - 1  && <Button onClick={onNext}>{activeStep === steps.length - 1 ? "Finalizar" : "Continuar"}</Button>}
+      {activeStep !== steps.length - 1  && <Button fullWidth onClick={onNext}>{activeStep === steps.length - 1 ? "Finalizar" : "Continuar"}</Button>}
     </Box>
   </Box>
 );

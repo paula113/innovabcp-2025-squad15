@@ -6,9 +6,9 @@ import Header from "../Components/Header/header";
 
 const MainLayout = ({ children }) => {
   return (
-    <Box display="flex" flexDirection="column" minHeight="100vh" sx={{ backgroundColor: "primary.main",}}>
+    <Box display="flex" flexDirection="column" minHeight="100vh" sx={{ backgroundColor: "primary.main"}}>
       <Header />
-      <Container component="main" sx={{ flexGrow: 1, mt: 3 }}      >
+      <Container component="main" sx={{ flexGrow: 1, mt: 3, paddingBottom: '50px' }}      >
         {children}
       </Container>
       {/* <Footer /> */}

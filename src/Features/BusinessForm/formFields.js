@@ -10,7 +10,7 @@ export const formFields = [
     },
     {
       label: 'Dependiente',
-      value: 'Dependent',
+      value: 'dependent',
       icon: 'type'
     }],
     validation: { required: "Selecciona uno es obligatorio" }
@@ -62,6 +62,7 @@ export const formFields = [
     type: "text",
     validation: { required: "Campo obligatorio" }
   },
+  { name: "website", label: "Link a página web", type: "url", validation: { pattern: { value: /https?:\/\/.+/, message: "URL inválida" } } },
   {
     name: "webProfiles",
     label: "Conecta tus redes",
