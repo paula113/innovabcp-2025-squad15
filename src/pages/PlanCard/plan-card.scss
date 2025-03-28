@@ -1,12 +1,12 @@
 .plan-card {
   background-color: #1b1b2d;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-family: sans-serif;
+  margin-top: 2rem;
   padding: 16px;
   width: 100%;
-  color: #fff;
-  margin-top: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  font-family: sans-serif;
 
   .plan-card__header {
     background-color: hsl(161, 96%, 33%, 0.7);
@@ -24,14 +24,14 @@
 
   .plan-card__description {
     font-size: 15px;
-    text-align: justify;
     margin-bottom: 3rem;
+    text-align: justify;
   }
 
   .plan-card__header_collapsed {
-    padding: 5px;
     background-color: rgb(43, 43, 43);
     font-weight: 500;
+    padding: 5px;
     span {
       font-size: 16px;
       opacity: 0.5;
@@ -43,12 +43,12 @@
   }
 
   &__header {
-    display: inline-flex;
     align-items: center;
-    gap: 8px;
     background-color: #2e2e44;
-    padding: 4px 8px;
     border-radius: 4px;
+    display: inline-flex;
+    gap: 8px;
+    padding: 4px 8px;
 
     & > .plan-card__icon {
       font-size: 18px;
@@ -59,21 +59,21 @@
     margin-top: 16px;
 
     &__title {
-      margin: 0 0 8px 0;
       font-size: 18px;
       font-weight: 600;
+      margin: 0 0 8px 0;
     }
   }
 
   &__amount-row {
-    display: flex;
     align-items: center;
+    display: flex;
     gap: 8px;
     margin-bottom: 12px;
 
     .plan-card__current {
-      font-weight: 700;
       color: #80ff80;
+      font-weight: 700;
     }
 
     .plan-card__divider {
@@ -85,27 +85,27 @@
     }
 
     .plan-card__time {
-      margin-left: auto;
       background-color: #2e2e44;
-      padding: 2px 6px;
       border-radius: 4px;
       font-size: 14px;
+      margin-left: auto;
+      padding: 2px 6px;
     }
   }
 
   &__progress-container {
-    display: flex;
     align-items: center;
+    display: flex;
     gap: 8px;
     margin-bottom: 12px;
 
     .plan-card__progress-bar {
-      height: 8px;
       background-color: #80ff80;
       border-radius: 4px;
-      width: 0;
-      transition: width 0.4s ease;
       flex: 1;
+      height: 8px;
+      transition: width 0.4s ease;
+      width: 0;
     }
 
     .plan-card__progress-text {
@@ -119,21 +119,21 @@
   }
 
   &__video {
-    position: relative;
-    width: 100%;
-    height: 120px;
+    align-items: center;
     background-color: #2e2e44;
     border-radius: 8px;
     display: flex;
-    align-items: center;
+    height: 120px;
     justify-content: center;
+    position: relative;
+    width: 100%;
 
     .plan-card__play-btn {
-      font-size: 24px;
-      color: #fff;
       background: none;
       border: none;
+      color: #fff;
       cursor: pointer;
+      font-size: 24px;
 
       &:hover {
         transform: scale(1.1);
@@ -142,21 +142,21 @@
   }
 
   .plan-card__video {
-    position: relative;
-    width: 100%;
-    height: 120px;
+    align-items: center;
     background: url('src/assets/image-video.png') center/cover no-repeat;
     border-radius: 8px;
     display: flex;
-    align-items: center;
+    height: 120px;
     justify-content: center;
+    position: relative;
+    width: 100%;
 
     .plan-card__play-btn {
-      font-size: 24px;
-      color: transparent;
       background: none;
       border: none;
+      color: transparent;
       cursor: pointer;
+      font-size: 24px;
 
       &:hover {
         transform: scale(1.1);

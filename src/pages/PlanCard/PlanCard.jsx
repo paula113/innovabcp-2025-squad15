@@ -6,7 +6,7 @@ import './plan-card.scss';
 const PlanCard = () => {
   return (
     <MainLayout>
-      <Box className='plan-card'>
+      <Box display='flex' alignContent='center' flexDirection='column' className='plan-card'>
         <Box className='plan-card__header'>
           <span className='plan-card__icon' role='img' aria-label='icono'>
             ✈️

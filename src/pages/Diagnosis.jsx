@@ -100,7 +100,7 @@ const CreditEvaluation = () => {
 
   return (
     <MainLayout>
-      <Box maxWidth='sm' display='flex' alignItems='flex' flexDirection='column'>
+      <Box  alignContent='center' display='flex' alignItems='flex' flexDirection='column'>
         {isLoading ? (
           <Box
             component='img'
