@@ -70,7 +70,7 @@ const CreditEvaluation = () => {
     setTimeout(() => {
       setIsLoading(false);
       navigate('/plan');
-    }, 5000);
+    }, 4000);
   };
 
   const chartData = Object.entries(report).map(([category, values]) => ({

@@ -70,6 +70,7 @@ const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showBu
                   <FormLabel color="text" align="left" sx={{marginBottom: '24px'}}>{label}</FormLabel>
                   <RadioGroup row {...register(name, validation)} 
                      value={selectedValue}
+                     fullWidth
                      onChange={(e) => setSelectedValue(e.target.value)}
                     sx={{
                       justifyContent: "space-between",
@@ -78,9 +79,10 @@ const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showBu
                   >
                     {options.map(({ label, value }) => (
                       <FormControlLabel key={value} value={value} 
+                      fullWidth
                       control={<Radio sx={{ display: "none" }} />} // Oculta el radio button
                       label={
-                        <Stack direction="row" alignItems="center" gap={1} spacing={1}>
+                        <Stack direction="row" alignItems="center" gap={1} fullWidth spacing={1}>
                           {React.cloneElement(iconEl[value], {
                             sx: { 
                               color: selectedValue === value ? "secondary.main" : "grey.500",

@@ -39,14 +39,14 @@ export const formFields = [
     type: 'number',
     validation: { required: 'Campo obligatorio' },
   },
-  {
-    name: 'businessEvolution',
-    label:
-      '¿Tu negocio ha tenido un crecimiento constante en los últimos años o ha enfrentado desafíos significativos?',
-    type: 'text',
-    textLimit: '200',
-    validation: { required: 'Campo obligatorio' },
-  },
+  // {
+  //   name: 'businessEvolution',
+  //   label:
+  //     '¿Tu negocio ha tenido un crecimiento constante en los últimos años o ha enfrentado desafíos significativos?',
+  //   type: 'text',
+  //   textLimit: '200',
+  //   validation: { required: 'Campo obligatorio' },
+  // },
   {
     name: 'incomeAverage',
     label: '¿Cuál es el promedio de ingresos mensuales de tu negocio?',
