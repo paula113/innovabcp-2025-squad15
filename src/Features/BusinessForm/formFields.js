@@ -10,7 +10,7 @@ export const formFields = [
     },
     {
       label: 'Dependiente',
-      value: 'Dependent',
+      value: 'dependent',
       icon: 'type'
     }],
     validation: { required: "Selecciona uno es obligatorio" }

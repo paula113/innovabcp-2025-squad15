@@ -1,13 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import { Box, TextField, Button, InputAdornment, Select, MenuItem, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Slider } from "@mui/material";
+import { Box, TextField, Button, InputAdornment, Select, MenuItem, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Slider, Stack } from "@mui/material";
 import DynamicList from "../DinamicList/default";
 import Dropzone from "../DropoutZone/default";
+import StoreIcon from '@mui/icons-material/Store';
+import WorkIcon from '@mui/icons-material/Work';
+
+const iconEl = {
+  independent: <StoreIcon sx={{ color: "secondary.main" }} />,
+  dependent: <WorkIcon sx={{ color: "secondary.main" }} /> 
+}
 
 const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null, showButton = true }) => {
   const [files, setFiles] = useState([]) 
-  
+  const [selectedValue, setSelectedValue] = useState("");
+
   const {
     register, 
     handleSubmit, 
@@ -57,17 +65,27 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
               <FormControl key={name} error={!!errors[name]}>
                 <FormLabel color="text" align="left" sx={{marginBottom: '24px'}}>{label}</FormLabel>
                 <RadioGroup row {...register(name, validation)} 
-                 
+                   value={selectedValue}
+                   onChange={(e) => setSelectedValue(e.target.value)}
                   sx={{
                     justifyContent: "space-between",
                     gap: '17px'
                   }}
                 >
                   {options.map(({ label, value }) => (
-                    <FormControlLabel key={value} value={value} control={<Radio />} label={label}
+                    <FormControlLabel key={value} value={value} 
+                    control={<Radio sx={{ display: "none" }} />} // Oculta el radio button
+                    label={
+                      <Stack direction="row" alignItems="center" gap={1} spacing={1}>
+                        {React.cloneElement(iconEl[value], {
+                          sx: { color: selectedValue === value ? "secondary.main" : "grey.500", }, // Cambia color dinámicamente
+                        })}
+                        {label}
+                      </Stack>
+                    }
                     sx={{
                       border: "2px solid",
-                      borderColor: "secondary.main",
+                      borderColor: selectedValue === value ? "secondary.main" : "grey.500", // Cambia borde dinámicamente
                       borderRadius: "8px",
                       padding: "8px",
                       backgroundColor: '#1e1e2d',
