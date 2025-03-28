@@ -12,19 +12,13 @@ import {
   Select,
   Slider,
   TextField,
-} from "@mui/material";
-import React, { useState } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
-import DynamicList from "../DinamicList/default";
-import Dropzone from "../DropoutZone/default";
+} from '@mui/material';
+import React, { useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
+import Dropzone from '../DropoutZone/default';
+import DynamicList from '../DynamicList/default';
 
-const Form = ({
-  fields,
-  onSubmit,
-  buttonText = "Enviar",
-  children = null,
-  showButton = true,
-}) => {
+const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showButton = true }) => {
   const [files, setFiles] = useState([]);
 
   const {
@@ -32,7 +26,6 @@ const Form = ({
     handleSubmit,
     formState: { errors },
     control,
-    // watch
   } = useForm();
   // Manejo de listas dinámicas dentro del formulario
   const {
@@ -41,17 +34,8 @@ const Form = ({
     remove,
   } = useFieldArray({
     control,
-    name: "test",
+    name: 'test',
   });
-
-  const getSubmitButton = () => {
-    if (!showButton) return null;
-    return (
-      <Button type="submit" variant="contained" color="secondary">
-        {buttonText}
-      </Button>
-    );
-  };
 
   const handleFormSubmit = (data) => {
     const formData = { ...data, files }; // Agregar los archivos a la data
@@ -59,48 +43,31 @@ const Form = ({
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(handleFormSubmit)}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 3,
-        width: "100%",
-        mb: 4,
-      }}
-    >
-      {fields.map(
-        ({
-          name,
-          label,
-          type,
-          options,
-          validation,
-          min,
-          max,
-          textLimit,
-          icon,
-        }) => {
+    <Box display='flex' flexDirection='column'>
+      <Box
+        component='form'
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          width: '100%',
+          mb: 4,
+        }}>
+        {fields.map(({ name, label, type, options, validation, min, max, textLimit, icon }) => {
           switch (type) {
-            case "radioButton":
+            case 'radioButton':
               return (
-                <FormControl key={name} error={!!errors[name]}>
-                  <FormLabel
-                    color="text"
-                    align="left"
-                    sx={{ marginBottom: "24px" }}
-                  >
+                <FormControl key={name} error={!!errors[name]} mb={2}>
+                  <FormLabel color='text' align='left' sx={{ marginBottom: '24px' }}>
                     {label}
                   </FormLabel>
                   <RadioGroup
                     row
                     {...register(name, validation)}
                     sx={{
-                      justifyContent: "space-between",
-                      gap: "17px",
-                    }}
-                  >
+                      justifyContent: 'space-between',
+                      gap: '17px',
+                    }}>
                     {options.map(({ label, value }) => (
                       <FormControlLabel
                         key={value}
@@ -108,13 +75,13 @@ const Form = ({
                         control={<Radio />}
                         label={label}
                         sx={{
-                          border: "2px solid",
-                          borderColor: "secondary.main",
-                          borderRadius: "8px",
-                          padding: "8px",
-                          backgroundColor: "#1e1e2d",
-                          width: "48%",
-                          margin: "0px",
+                          border: '2px solid',
+                          borderColor: 'secondary.main',
+                          borderRadius: '8px',
+                          padding: '8px',
+                          backgroundColor: '#1e1e2d',
+                          width: '48%',
+                          margin: '0px',
                         }}
                       />
                     ))}
@@ -122,40 +89,38 @@ const Form = ({
                 </FormControl>
               );
 
-            case "select":
+            case 'select':
               return (
-                <FormControl key={name} fullWidth>
-                  <FormLabel color="text" align="left" sx={{ marginBottom: 0 }}>
+                <FormControl key={name} fullWidth mb={2}>
+                  <FormLabel color='text' align='left' sx={{ marginBottom: 0 }}>
                     {label}
                   </FormLabel>
                   <Select
                     {...register(name, validation)}
-                    variant="standard"
-                    defaultValue=""
+                    variant='standard'
+                    defaultValue=''
                     MenuProps={{
                       PaperProps: {
                         sx: {
-                          backgroundColor: "background.lightBlue", // Change background color
-                          boxShadow: "none", // Remove shadow
+                          backgroundColor: 'background.lightBlue', // Change background color
+                          boxShadow: 'none', // Remove shadow
                           borderRadius: 2, // Optional: rounded corners
                           mt: 0,
                         },
                       },
-                    }}
-                  >
+                    }}>
                     {options.map(({ label, value }) => (
                       <MenuItem
                         key={value}
                         value={value}
-                        variant="standard"
+                        variant='standard'
                         sx={{
-                          backgroundColor: "none", // Color de fondo de cada opción
-                          "&:hover": {
-                            backgroundColor: "#03A673", // Color cuando pasas el mouse
-                            color: "white", // Texto en blanco para contraste
+                          backgroundColor: 'none', // Color de fondo de cada opción
+                          '&:hover': {
+                            backgroundColor: '#03A673', // Color cuando pasas el mouse
+                            color: 'white', // Texto en blanco para contraste
                           },
-                        }}
-                      >
+                        }}>
                         {label}
                       </MenuItem>
                     ))}
@@ -163,41 +128,41 @@ const Form = ({
                 </FormControl>
               );
 
-            case "number":
+            case 'number':
               return (
-                <FormControl fullWidth align="left" variant="standard">
+                <FormControl fullWidth align='left' variant='standard' mb={2}>
                   <FormLabel>{label}</FormLabel>
                   <TextField
                     key={name}
                     {...register(name, validation)}
                     //  label={label}
-                    type="number"
+                    type='number'
                     error={!!errors[name]}
                     helperText={errors[name]?.message}
                     fullWidth
-                    variant="standard"
+                    variant='standard'
                     InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
                   />
                 </FormControl>
               );
 
-            case "webProfiles":
+            case 'webProfiles':
               return (
                 <DynamicList
                   fields={list}
                   register={register}
                   append={append}
                   remove={remove}
-                  title="Presencia Digital"
-                  name="digitalWebs"
-                  options={["Página web", "Mercado en libre"]}
+                  title='Presencia Digital'
+                  name='digitalWebs'
+                  options={['Página web', 'Mercado en libre']}
                 />
               );
 
-            case "range":
+            case 'range':
               return (
                 <Box key={name}>
-                  <FormLabel color="text" align="left" sx={{ marginBottom: 2 }}>
+                  <FormLabel color='text' align='left' mb={2}>
                     {label}
                   </FormLabel>
                   <Slider
@@ -207,45 +172,43 @@ const Form = ({
                     step={1000}
                     defaultValue={min}
                     marks
-                    variant="standard"
-                    valueLabelDisplay="on" // Muestra los valores siempre
-                    valueLabelFormat={(value) =>
-                      `S/ ${value.toLocaleString("es-PE")}`
-                    } // Formato moneda peruana
+                    variant='standard'
+                    valueLabelDisplay='on' // Muestra los valores siempre
+                    valueLabelFormat={(value) => `S/ ${value.toLocaleString('es-PE')}`} // Formato moneda peruana
                     sx={{
-                      color: "secondary.main", // Usa el color "secondary" del tema
-                      "& .MuiSlider-thumb": {
-                        color: "secondary.main", // Color del "punto" del slider
+                      color: 'secondary.main', // Usa el color "secondary" del tema
+                      '& .MuiSlider-thumb': {
+                        color: 'secondary.main', // Color del "punto" del slider
                       },
-                      "& .MuiSlider-track": {
-                        color: "secondary.main", // Color de la línea del slider
+                      '& .MuiSlider-track': {
+                        color: 'secondary.main', // Color de la línea del slider
                       },
-                      "& .MuiSlider-rail": {
-                        color: "grey.300", // Color de la línea de fondo (opcional)
+                      '& .MuiSlider-rail': {
+                        color: 'grey.300', // Color de la línea de fondo (opcional)
                       },
                     }}
                   />
                 </Box>
               );
 
-            case "url":
+            case 'url':
               return (
-                <FormControl fullWidth align="left" variant="standard">
+                <FormControl fullWidth align='left' variant='standard' mb={2}>
                   <FormLabel>{label}</FormLabel>
                   <TextField
                     key={name}
                     {...register(name, validation)}
-                    type="url"
+                    type='url'
                     error={!!errors[name]}
                     helperText={errors[name]?.message}
                     fullWidth
-                    variant="standard"
+                    variant='standard'
                     InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
                   />
                 </FormControl>
               );
 
-            case "dropZone":
+            case 'dropZone':
               return (
                 <Dropzone
                   files={files}
@@ -256,43 +219,58 @@ const Form = ({
                 />
               );
 
-            case "text":
+            case 'text':
             default:
               return (
-                <FormControl fullWidth align="left" variant="standard">
-                  <FormLabel>{label}</FormLabel>
-                  <TextField
-                    key={name}
-                    {...register(name, validation)}
-                    // label={label}
-                    type="text"
-                    error={!!errors[name]}
-                    helperText={errors[name]?.message}
-                    fullWidth
-                    variant="standard"
-                    inputProps={textLimit ? { maxLength: textLimit } : {}}
-                    slotProps={
-                      icon && {
+                <>
+                  <FormControl fullWidth align='left' variant='standard' mb={2}>
+                    <FormLabel>{label}</FormLabel>
+                    <TextField
+                      key={name}
+                      {...register(name, validation)}
+                      type='text'
+                      error={!!errors[name]}
+                      helperText={errors[name]?.message}
+                      fullWidth
+                      variant='standard'
+                      inputProps={textLimit ? { maxLength: textLimit } : {}}
+                      slotProps={{
                         input: {
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              {icon}
-                            </InputAdornment>
-                          ),
+                          shrink: true,
+                          ...(icon && {
+                            startAdornment: (
+                              <InputAdornment
+                                position='start'
+                                sx={{
+                                  color: '#a2a2a7',
+                                  width: '0.9em',
+                                  marginRight: '20px',
+                                }}>
+                                {icon}
+                              </InputAdornment>
+                            ),
+                          }),
                         },
-                      }
-                    }
-                    InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
-                  />
-                </FormControl>
+                      }}
+                    />
+                  </FormControl>
+                </>
               );
           }
-        }
+        })}
+
+        {children}
+      </Box>
+
+      {showButton && (
+        <Button
+          onClick={handleSubmit(handleFormSubmit)}
+          type='submit'
+          variant='contained'
+          sx={{ color: 'black', fontWeight: 500, letterSpacing: '0.4px' }}>
+          {buttonText}
+        </Button>
       )}
-
-      {children}
-
-      {getSubmitButton()}
     </Box>
   );
 };
