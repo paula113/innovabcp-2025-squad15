@@ -47,7 +47,7 @@ export const formFields = [
     label: "¿Cuál es el promedio de ingresos mensuales de tu negocio?",
     type: "range",
     min: 3000,
-    max: 50000,
+    max: 10000,
     validation: { required: "Campo obligatorio" }
   },
   {

@@ -17,3 +17,10 @@
 .rotating-svg {
   animation: rotate 2s linear infinite; /* Gira en 2 segundos de manera infinita */
 }
+
+.loader-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 480px;
+}
