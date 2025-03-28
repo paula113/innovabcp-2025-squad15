@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Box, Container } from "@mui/material";
 import React from "react";
-import Header from "../Components/Header/header";
+import Header from "../components/Header/header";
 // import Footer from "./Footer";
 
 const MainLayout = ({ children, showGoal = false }) => {

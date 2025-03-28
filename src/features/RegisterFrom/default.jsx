@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Form from "../../Components/Form/default";
+import Form from "../../components/Form/default";
 import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import loader from "../../assets/loader.svg";

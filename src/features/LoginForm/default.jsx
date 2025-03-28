@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 // import { useAuth } from "../../Context/AuthContext";
-import Form from "../../Components/Form/default";
+import Form from "../../components/Form/default";
 
 const LoginForm = () => {
   const navigate = useNavigate();

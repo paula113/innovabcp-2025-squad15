@@ -1,9 +1,9 @@
 // import { Box, Container, Typography } from "@mui/material";
-// import Form from "../../Components/Form/default";
+// import Form from "../../components/Form/default";
 // import { Link } from "react-router-dom";
 // import PersonIcon from '@mui/icons-material/Person';
 // import React, { useState } from "react";
-// import HorizontalLinearStepper from "../../Components/VerticalStepper/default";
+// import HorizontalLinearStepper from "../../components/VerticalStepper/default";
 // import { formFields, formFieldsLastStep, formFieldsSecondStep } from "../BusinessForm/formFields";
 
 // const UserProfile = () => {

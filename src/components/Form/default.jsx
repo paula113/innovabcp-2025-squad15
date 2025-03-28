@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Box, TextField, Button, InputAdornment, Select, MenuItem, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Slider, Stack } from "@mui/material";
-import DynamicList from "../DinamicList/default";
+import DynamicList from "../DynamicList/default";
 import Dropzone from "../DropoutZone/default";
 import StoreIcon from '@mui/icons-material/Store';
 import WorkIcon from '@mui/icons-material/Work';
