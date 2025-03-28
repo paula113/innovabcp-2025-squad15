@@ -54,3 +54,6 @@
 // };
 
 // export default UserProfile;
+
+
+export default {}

@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter } from "react-router";
 import "./App.css";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -13,9 +13,7 @@ function App() {
      <RouterApp />
     </BrowserRouter>
     </QueryClientProvider>
-  )
+  );
 }
 
-export default App
-
-
+export default App;

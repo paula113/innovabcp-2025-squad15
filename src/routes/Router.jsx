@@ -1,13 +1,9 @@
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Logros from "../pages/Logros";
-import AboutUser from "../pages/AboutUser";
-import HomeResults from "../pages/HomeResults";
-import Diagnosis from "../pages/Diagnosis";
-import Roadmap from "../pages/Roadmap";
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Achievements from '../pages/Achievements';
+import BuildYourCredit from '../pages/BuildYourCredit';
+import NextSteps from '../pages/NextSteps';
+import { default as Register, default as SignUp } from '../pages/SignUp';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from '../context/AuthContext';
 
@@ -15,26 +11,23 @@ const RouterApp = () => (
   <AuthProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<Register />} />
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/logros" element={<Logros />} />
-        <Route path="/home" element={<HomeResults />} />
-        <Route path="/diagnosis" element={<Diagnosis />} />
-        <Route path="/plan" element={<Roadmap />} />
-
+        <Route path='/' element={<Register />} />
+        <Route path='/signup-for-credit' element={<SignUp />} />
+        <Route path='/next-steps' element={<NextSteps />} />
         <Route
-          path="/"
+          path='/build-your-credit'
           element={
             <ProtectedRoute>
-              <Home />
+              <BuildYourCredit />
             </ProtectedRoute>
           }
         />
+        <Route path='/achievements' element={<Achievements />} />
         <Route
-          path="/about-credit"
+          path='/'
           element={
             <ProtectedRoute>
-              <AboutUser />
+              <NextSteps />
             </ProtectedRoute>
           }
         />

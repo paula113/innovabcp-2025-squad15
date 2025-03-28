@@ -1,11 +1,11 @@
-import React from "react";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+import React from "react";
 
-const Logros = () => {
+const Achievements = () => {
   const radioGroup = {
     departamento: "Comprar un departamento",
     costo: "Reducir costos",
@@ -50,4 +50,4 @@ const Logros = () => {
   );
 };
 
-export default Logros;
+export default Achievements;
