@@ -1,7 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import React from 'react';
-import MainLayout from '../../layouts/MainLayout';
-import './plan-card.scss';
+import MainLayout from '../layouts/MainLayout';
 
 const PlanCard = () => {
   return (

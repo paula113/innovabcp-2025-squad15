@@ -5,9 +5,11 @@ import Achievements from '../pages/Achievements';
 import BuildYourCredit from '../pages/BuildYourCredit';
 import CreditEvaluation from '../pages/Diagnosis';
 import NextSteps from '../pages/NextSteps';
-import PlanCard from '../pages/PlanCard/PlanCard';
+// import PlanCard from '../pages/PlanCard/PlanCard';
+
 import { default as Register, default as SignUp } from '../pages/SignUp';
 import ProtectedRoute from './ProtectedRoute';
+import PlanCard from '../pages/PlanCard';
 
 const RouterApp = () => (
   <AuthProvider>
