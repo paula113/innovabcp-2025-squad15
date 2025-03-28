@@ -36,7 +36,7 @@ const PlanCard = () => {
           <Box
             className='plan-card__video'
             sx={{
-              backgroundImage: "url('src/assets/image 4.png')",
+              backgroundImage: "url('src/assets/image-video.png')",
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
