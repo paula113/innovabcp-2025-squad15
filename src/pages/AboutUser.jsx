@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {  Typography, Button } from "@mui/material";
 import MainLayout from "../layouts/MainLayout";
 import BusinessForm from "../Features/BusinessForm/default";
+import UserProfile from "../Features/UserProfile/default";
 
 const AboutUser = () => {
   const navigate = useNavigate();
