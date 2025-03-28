@@ -9,6 +9,7 @@ import Logros from "../pages/Logros";
 import AboutUser from "../pages/AboutUser";
 import HomeResults from "../pages/HomeResults";
 import Diagnosis from "../pages/Diagnosis";
+import Roadmap from "../pages/Roadmap";
 
 const RouterApp = () => (
   <AuthProvider>
@@ -19,6 +20,7 @@ const RouterApp = () => (
         <Route path="/logros" element={<Logros />} />
         <Route path="/home" element={<HomeResults />} />
         <Route path="/diagnosis" element={<Diagnosis />} />
+        <Route path="/plan" element={<Roadmap />} />
 
         <Route
           path="/"

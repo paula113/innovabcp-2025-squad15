@@ -4,10 +4,10 @@ import { Container, Box } from "@mui/material";
 import Header from "../Components/Header/header";
 // import Footer from "./Footer";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, showGoal = false }) => {
   return (
     <Box display="flex" flexDirection="column" minHeight="100vh" sx={{ backgroundColor: "primary.main"}}>
-      <Header />
+      <Header showGoal={showGoal} />
       <Container component="main" sx={{ flexGrow: 1, mt: 3, paddingBottom: '50px' }}      >
         {children}
       </Container>
