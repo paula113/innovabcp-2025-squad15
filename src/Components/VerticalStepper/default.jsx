@@ -90,19 +90,21 @@ const CompletionMessage = ({ onReset }) => (
 );
 
 // ✅ Extracted component for navigation controls
+// eslint-disable-next-line no-unused-vars
 const NavigationControls = ({ activeStep, isStepOptional, onBack, onNext, onSkip, steps }) => (
   <Box>
     <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-      <Button color="inherit" disabled={activeStep === 0} onClick={onBack} sx={{ mr: 1 }}>
+      {activeStep !== steps.length - 1 && <Button color="inherit" disabled={activeStep === 0} onClick={onBack} sx={{ mr: 1 }}>
         Atrás
-      </Button>
+      </Button>}
       <Box sx={{ flex: "1 1 auto" }} />
-      {isStepOptional(activeStep) && (
+      {/* {isStepOptional(activeStep) && (
         <Button color=" " onClick={onSkip} sx={{ mr: 1 }}>
           Saltar
         </Button>
-      )}
-      <Button onClick={onNext}>{activeStep === steps.length - 1 ? "Finalizar" : "Continuar"}</Button>
+      )} */}
+
+      {activeStep !== steps.length - 1 && <Button onClick={onNext}>{activeStep === steps.length - 1 ? "Finalizar" : "Continuar"}</Button>}
     </Box>
   </Box>
 );

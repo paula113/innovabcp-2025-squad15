@@ -22,7 +22,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
   return (
     <Box
       component="form"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={showButton && handleSubmit(onSubmit)}
       sx={{
         display: "flex",
         flexDirection: "column",
