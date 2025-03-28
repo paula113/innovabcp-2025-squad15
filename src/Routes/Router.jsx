@@ -13,8 +13,8 @@ const RouterApp = () => (
   <AuthProvider>
     <Router>
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Register />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/logros" element={<Logros />} />
         <Route path="/home" element={<HomeResults />} />
         <Route
