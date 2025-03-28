@@ -1,11 +1,9 @@
+import { Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Typography, Button } from "@mui/material";
 import MainLayout from "../layouts/MainLayout";
-import BasicModal from "../Components/Modal/default";
-import BusinessForm from "../Features/BusinessForm/default";
 
-const Home = () => {
+const NextSteps = () => {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -28,7 +26,9 @@ const Home = () => {
 
   return (
     <MainLayout>
-      <Typography variant="h4">{`Bienvenida ${user?.name || ''}`} 🎉</Typography>
+      <Typography variant="h4">
+        {`Bienvenida ${user?.name || ""}`} 🎉
+      </Typography>
       {/* <BasicModal modalContent={modalContent} /> */}
       {/* <BusinessForm /> */}
       <Button
@@ -43,4 +43,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default NextSteps;

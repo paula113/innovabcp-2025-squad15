@@ -1,10 +1,9 @@
-import { Box, Container, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import Form from "../../Components/Form/default";
-import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
-import loader from "../../assets/loader.svg";
+import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import loader from "../../assets/loader.svg";
+import Form from "../../components/Form/default";
 
 const RegisterFrom = () => {
   const [isLoading, setIsLoading] = useState(false);

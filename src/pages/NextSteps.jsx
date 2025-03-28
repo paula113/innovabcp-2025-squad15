@@ -1,24 +1,17 @@
-import React from "react";
-//import MainLayout from "../layouts/MainLayout";
 import { Box, Button, Container, Typography } from "@mui/material";
-//import mainLogo from "../../assets/bcp-logo.png";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import mainLogo from "../assets/bcp-logo.png";
 import mainsonLogo from "../assets/mainson-logo.png";
-import { useNavigate } from "react-router-dom";
 
-const HomeResults = () => {
-  const respuesta = {
-    negativo: "Por el momento no contamos con una oferta Pre Aprobada para tí.",
-    solucion:
-      "Queremos conocerte para ayudarte a mejorar tu score crediticio y puedas obtener lo mas pronto posible tu crédito hipotecario",
-  };
+const NextSteps = () => {
   const navigate = useNavigate();
+
   const handleSubmit = () => {
-    navigate("/about-credit");
+    navigate("/build-your-credit");
   };
 
   return (
-    // <MainLayout>
     <Box
       display="flex"
       flexDirection="column"
@@ -41,7 +34,9 @@ const HomeResults = () => {
       </Box>
       <Container sx={{ flexGrow: 1, mt: 55 }}>
         <Typography variant="p" sx={{ fontSize: "24px" }}>
-          {respuesta.negativo} {respuesta.solucion}
+          Por el momento no contamos con una oferta Pre Aprobada para tí.
+          Queremos conocerte para ayudarte a mejorar tu score crediticio y
+          puedas obtener lo mas pronto posible tu crédito hipotecario
         </Typography>
 
         <Button
@@ -61,8 +56,7 @@ const HomeResults = () => {
         </Button>
       </Container>
     </Box>
-    // </MainLayout>
   );
 };
 
-export default HomeResults;
+export default NextSteps;

@@ -1,20 +1,16 @@
 import React from "react";
-import RegisterFrom from "../Features/RegisterFrom/default";
+import RegisterFrom from "../features/RegisterFrom/default";
 import MainLayout from "../layouts/MainLayout";
 
 const Register = () => {
-  const showForm = true
+  const showForm = true;
 
   const getDetailsView = () => {
     if (!showForm) return null;
-    return  <RegisterFrom />
+    return <RegisterFrom />;
   };
 
-  return (
-    <MainLayout>
-      {getDetailsView()}
-    </MainLayout>
-  );
+  return <MainLayout>{getDetailsView()}</MainLayout>;
 };
 
 export default Register;

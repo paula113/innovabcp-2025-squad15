@@ -1,12 +1,11 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { AuthProvider } from "../Context/AuthContext";
+import { AuthProvider } from "../context/AuthContext";
 import AboutUser from "../pages/AboutUser";
 import Achievements from "../pages/Achievements";
 import Diagnosis from "../pages/Diagnosis";
-import Home from "../pages/Home";
 import HomeResults from "../pages/HomeResults";
-import Login from "../pages/Login";
+import NextSteps from "../pages/NextSteps";
 import Register from "../pages/Register";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -15,8 +14,16 @@ const RouterApp = () => (
     <Router>
       <Routes>
         <Route path="/" element={<Register />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup-for-credit" element={<Register />} />
+        <Route path="/next-steps" element={<NextSteps />} />
+        <Route
+          path="/build-your-credit"
+          element={
+            <ProtectedRoute>
+              <AboutUser />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/achievements" element={<Achievements />} />
         <Route path="/home" element={<HomeResults />} />
         <Route path="/diagnosis" element={<Diagnosis />} />
@@ -25,15 +32,7 @@ const RouterApp = () => (
           path="/"
           element={
             <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/about-credit"
-          element={
-            <ProtectedRoute>
-              <AboutUser />
+              <NextSteps />
             </ProtectedRoute>
           }
         />
