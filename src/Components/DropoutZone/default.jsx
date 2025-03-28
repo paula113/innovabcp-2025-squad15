@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
-import { Box, Paper, Typography } from '@mui/material';
+import React from "react";
 import { useDropzone } from "react-dropzone";
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { Box, Paper, Typography } from "@mui/material";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import DocumentList from "../DocumentList/default";
+// import DocumentList from "./DocumentList"; // Importa el componente DocumentList
 
-function Dropzone({ files = [], setFiles = () => {} }) {
+const Dropzone = ({ files = [], setFiles = () => {} }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       "image/*": [".png", ".jpg", ".jpeg", ".gif", ".webp"],
@@ -15,11 +17,33 @@ function Dropzone({ files = [], setFiles = () => {} }) {
     },
     multiple: true,
     onDrop: (acceptedFiles) => {
-      setFiles([...files, ...acceptedFiles]);
+      const newFiles = acceptedFiles.map((file) => ({
+        id: crypto.randomUUID(), // Genera un ID único para cada archivo
+        name: file.name,
+        type: file.type,
+        option: null, // Se actualizará cuando el usuario elija una opción
+      }));
+      setFiles([...files, ...newFiles]);
     },
   });
-  const getInputView = () => (
-    <Paper
+
+  // Actualizar la opción seleccionada en la lista de archivos
+  const handleUpdateOption = (fileId, selectedOption) => {
+    setFiles((prevFiles) =>
+      prevFiles.map((file) =>
+        file.id === fileId ? { ...file, option: selectedOption } : file
+      )
+    );
+  };
+
+  return (
+    <>
+      <Typography variant="h6" align="left" sx={{ mt: 3 }}>
+        Subir archivos
+      </Typography>
+
+      {/* Área de arrastrar y soltar */}
+      <Paper
         {...getRootProps()}
         sx={{
           p: 3,
@@ -33,34 +57,21 @@ function Dropzone({ files = [], setFiles = () => {} }) {
         <input {...getInputProps()} />
         <CloudUploadIcon fontSize="large" color="text" />
         <Typography variant="body1" color="text">
-          {isDragActive ? "Suelta los archivos aquí..." : "Arrastra y suelta archivos aquí o haz clic para seleccionar"}
+          {isDragActive
+            ? "Suelta los archivos aquí..."
+            : "Arrastra y suelta archivos aquí o haz clic para seleccionar"}
         </Typography>
       </Paper>
-  );
 
-  const getFilesDetailsView = () => {
-    if (files.length === 0) return null
-
-    return (
-      <Box sx={{ mt: 2 }}>
+      {/* Lista de archivos con opciones */}
+      {files.length > 0 && (
+        <Box sx={{ mt: 2 }}>
           <Typography variant="subtitle1">Archivos seleccionados:</Typography>
-          <ul>
-            {files.map((file, index) => (
-              <li key={index}>{file.name}</li>
-            ))}
-          </ul>
+          <DocumentList files={files} onSelectOption={handleUpdateOption} />
         </Box>
-  )}
-
-  return (
-    <>
-      <Typography variant="h6" align="left" sx={{ mt: 3 }}>Subir archivos</Typography>
-      {getInputView()}
-      {getFilesDetailsView()}
+      )}
     </>
   );
-}
+};
 
-Dropzone.propTypes = {}
-
-export default Dropzone
+export default Dropzone;

@@ -79,3 +79,48 @@ export const formFieldsSecondStep = [
     validation: { required: "Campo obligatorio" }
   },
 ]
+
+export const formFieldsLastStep = [
+  {
+    name: "homeType",
+    label: "Tipo de vivienda",
+    type: "select",
+    options: [{
+      label: 'Casa',
+      value: 'home',
+    },
+    {
+      label: 'Departamento',
+      value: 'appartment',
+    }],
+    validation: { required: "Selecciona es obligatorio" }
+  },
+  {
+    name: "totalAmount",
+    label: "¿Costo del departamento?",
+    type: "range",
+    min: 60000,
+    max: 150000,
+    validation: { required: "Campo obligatorio" }
+  },
+  {
+    name: "initialAmount",
+    label: "¿Cuentas con una inicial?",
+    type: "number",
+    validation: { required: "Campo obligatorio" }
+  },
+  {
+    name: "quote",
+    label: "¿En cuántas cuotas quieres pagar?",
+    type: "select",
+    options: [{
+      label: '60',
+      value: '60',
+    },
+    {
+      label: '80',
+      value: '80',
+    }],
+    validation: { required: "Selecciona es obligatorio" }
+  },
+]

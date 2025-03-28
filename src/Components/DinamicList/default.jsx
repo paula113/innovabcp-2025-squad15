@@ -15,7 +15,7 @@ const  validation = { pattern: { value: /https?:\/\/.+/, message: "URL inválida
       </Box>
 
       {fields.map((item, index) => (
-        <Box key={item.id} display="flex" flexDirection="row" gap={2}  sx={{ alignContent: 'center' }}>
+        <Box key={item.id} display="flex" flexDirection="row" gap={2}  sx={{ alignContent: 'center', alignItems: 'flex-end', height: '48px' }}>
           {/* Select con validación */}
           <FormControl sx={{ width: '33%'}} error={!!errors?.[name]?.[index]?.type}>
             <Select
@@ -52,6 +52,7 @@ const  validation = { pattern: { value: /https?:\/\/.+/, message: "URL inválida
             variant="standard"
             error={!!errors?.[name]?.[index]?.source}
             helperText={errors?.[name]?.[index]?.source?.message}
+            sx={{ margin: '0px' }}
           />
           
           <IconButton onClick={() => remove(index)}>

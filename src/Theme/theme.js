@@ -48,19 +48,19 @@ const theme = createTheme({
         },
       },
     },
-    MuiStepLabel: {
-      styleOverrides: {
-        label: {
-          color: 'gray', // Default label color
-          '&.Mui-active': {
-            color: 'blue', // Active step
-          },
-          '&.Mui-completed': {
-            color: 'green', // Completed step
-          },
-        },
-      },
-    },
+    // MuiStepLabel: {
+    //   styleOverrides: {
+    //     label: {
+    //       color: 'gray', // Default label color
+    //       '&.Mui-active': {
+    //         color: 'blue', // Active step
+    //       },
+    //       '&.Mui-completed': {
+    //         color: 'green', // Completed step
+    //       },
+    //     },
+    //   },
+    // },
     MuiStepIcon: {
       styleOverrides: {
         root: {
@@ -69,7 +69,7 @@ const theme = createTheme({
             color: 'blue', // Active icon
           },
           '&.Mui-completed': {
-            color: 'yellow', // Completed icon
+            color: '#03A673', // Completed icon
           },
         },
       },
