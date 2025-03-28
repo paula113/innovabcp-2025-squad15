@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-// import { AuthProvider } from '../context/AuthContext';
 import Achievements from '../pages/Achievements';
 import BuildYourCredit from '../pages/BuildYourCredit';
 import NextSteps from '../pages/NextSteps';
 import { default as Register, default as SignUp } from '../pages/SignUp';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from '../context/AuthContext';
+import CreditEvaluation from '../pages/Diagnosis';
 
 const RouterApp = () => (
   <AuthProvider>
@@ -24,6 +24,7 @@ const RouterApp = () => (
           }
         />
         <Route path='/achievements' element={<Achievements />} />
+        <Route path='/diagnosis' element={<CreditEvaluation />} />
         <Route
           path='/'
           element={

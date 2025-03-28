@@ -1,19 +1,19 @@
-import { Container, Typography } from '@mui/material';
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Form from '../../components/Form/default';
+import React from "react";
+import { Container, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import Form from "../../components/Form/default";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   // const { login } = useAuth();
 
   const handleFormSubmit = (data) => {
-    console.log('Login data:', data);
+    console.log("Login data:", data);
 
     // Simulating authentication
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    console.log('🚀 ~ handleFormSubmit ~ storedUser:', storedUser, data);
-    navigate('/');
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    console.log("🚀 ~ handleFormSubmit ~ storedUser:", storedUser, data);
+    navigate("/");
   };
 
   const formFields = [

@@ -3,7 +3,7 @@ import { Box, Container } from "@mui/material";
 import React from "react";
 import Header from "../components/Header/header";
 
-const MainLayout = ({ children }) => {
+const MainLayout = ({ children, showGoal = false }) => {
   return (
     <Box
       display="flex"
@@ -11,7 +11,7 @@ const MainLayout = ({ children }) => {
       minHeight="100vh"
       sx={{ backgroundColor: "primary.main" }}
     >
-      <Header />
+      <Header showGoal={showGoal} />
       <Container
         component="main"
         sx={{ flexGrow: 1, mt: 3, paddingBottom: "50px" }}

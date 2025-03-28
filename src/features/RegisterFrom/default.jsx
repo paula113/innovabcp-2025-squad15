@@ -2,8 +2,9 @@ import { Email, PhoneAndroid } from '@mui/icons-material';
 import PersonIcon from '@mui/icons-material/Person';
 import { Box, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Form from '../../components/Form/default';
+import loader from '../../assets/loader.svg';
 
 const SignUpForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -66,9 +67,41 @@ const SignUpForm = () => {
     },
   ];
 
-  if (isLoading) {
-    return null;
-  }
+const getLoaderView = () => {
+  if (!isLoading) return null;
+
+  return (
+    <div className="loader-wrapper">
+      <Box
+        component="img"
+        src={loader}
+        alt="BCP Logo"
+        className="rotating-svg"
+        sx={{ height: 230 }}
+      />
+    </div>
+  );
+};
+
+const getFormView = () => {
+  if (isLoading) return null;
+
+  return (
+    <>
+      <Typography variant="h4" gutterBottom>
+        Registro de Usuario
+      </Typography>
+      <Form
+        fields={formFields}
+        onSubmit={handleFormSubmit}
+        buttonText="Registrar"
+      />
+      <Typography variant="button" sx={{ m: 5 }} gutterBottom>
+        <Link to="/login">Login</Link>
+      </Typography>
+    </>
+  );
+};
 
   return (
     <Box display='flex' alignContent='center' flexDirection='column'>
@@ -82,7 +115,8 @@ const SignUpForm = () => {
         </Typography>
       </Box>
 
-      <Form fields={formFields} onSubmit={handleFormSubmit} buttonText='Continuar' />
+      {getLoaderView()}
+      {getFormView()}
     </Box>
   );
 };

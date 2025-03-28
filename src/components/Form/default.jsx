@@ -11,15 +11,24 @@ import {
   RadioGroup,
   Select,
   Slider,
+  Stack,
   TextField,
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import Dropzone from '../DropoutZone/default';
 import DynamicList from '../DynamicList/default';
+import StoreIcon from '@mui/icons-material/Store';
+import WorkIcon from '@mui/icons-material/Work';
+
+const iconEl = {
+  independent: <StoreIcon sx={{ color: "secondary.main" }} />,
+  dependent: <WorkIcon sx={{ color: "secondary.main" }} /> 
+}
 
 const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showButton = true }) => {
   const [files, setFiles] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("");
 
   const {
     register,
@@ -57,32 +66,40 @@ const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showBu
           switch (type) {
             case 'radioButton':
               return (
-                <FormControl key={name} error={!!errors[name]} mb={2}>
-                  <FormLabel color='text' align='left' sx={{ marginBottom: '24px' }}>
-                    {label}
-                  </FormLabel>
-                  <RadioGroup
-                    row
-                    {...register(name, validation)}
+                <FormControl key={name} error={!!errors[name]}>
+                  <FormLabel color="text" align="left" sx={{marginBottom: '24px'}}>{label}</FormLabel>
+                  <RadioGroup row {...register(name, validation)} 
+                     value={selectedValue}
+                     onChange={(e) => setSelectedValue(e.target.value)}
                     sx={{
-                      justifyContent: 'space-between',
-                      gap: '17px',
-                    }}>
+                      justifyContent: "space-between",
+                      gap: '17px'
+                    }}
+                  >
                     {options.map(({ label, value }) => (
-                      <FormControlLabel
-                        key={value}
-                        value={value}
-                        control={<Radio />}
-                        label={label}
-                        sx={{
-                          border: '2px solid',
-                          borderColor: 'secondary.main',
-                          borderRadius: '8px',
-                          padding: '8px',
-                          backgroundColor: '#1e1e2d',
-                          width: '48%',
-                          margin: '0px',
-                        }}
+                      <FormControlLabel key={value} value={value} 
+                      control={<Radio sx={{ display: "none" }} />} // Oculta el radio button
+                      label={
+                        <Stack direction="row" alignItems="center" gap={1} spacing={1}>
+                          {React.cloneElement(iconEl[value], {
+                            sx: { 
+                              color: selectedValue === value ? "secondary.main" : "grey.500",
+                              "&:hover": { borderColor: "secondary.main"},
+                            }, // Cambia color dinámicamente
+                          })}
+                          {label}
+                        </Stack>
+                      }
+                      sx={{
+                        border: "2px solid",
+                        borderColor: selectedValue === value ? "secondary.main" : "grey.500", // Cambia borde dinámicamente
+                        borderRadius: "8px",
+                        padding: "8px",
+                        backgroundColor: '#1e1e2d',
+                        width: '48%',
+                        margin: '0px',
+                        "&:hover": { borderColor: "secondary.main"},
+                      }}
                       />
                     ))}
                   </RadioGroup>
@@ -155,8 +172,7 @@ const Form = ({ fields, onSubmit, buttonText = 'Enviar', children = null, showBu
                   remove={remove}
                   title='Presencia Digital'
                   name='digitalWebs'
-                  options={['Página web', 'Mercado en libre']}
-                />
+                  options={['Mercado en libre', 'instagram', 'tiktok', 'Amazon']}                 />
               );
 
             case 'range':
