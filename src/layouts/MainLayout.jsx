@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
+import { Box, Container } from "@mui/material";
 import React from "react";
-import { Container, Box } from "@mui/material";
 import Header from "../Components/Header/header";
 // import Footer from "./Footer";
 

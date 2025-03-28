@@ -1,15 +1,15 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./ProtectedRoute";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import { AuthProvider } from "../Context/AuthContext";
 import Logros from "../pages/Logros";
 import AboutUser from "../pages/AboutUser";
 import HomeResults from "../pages/HomeResults";
 import Diagnosis from "../pages/Diagnosis";
 import Roadmap from "../pages/Roadmap";
+import React from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import { AuthProvider } from '../context/AuthContext';
 
 const RouterApp = () => (
   <AuthProvider>
