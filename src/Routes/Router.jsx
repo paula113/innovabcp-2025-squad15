@@ -8,15 +8,18 @@ import { AuthProvider } from "../Context/AuthContext";
 import Logros from "../pages/Logros";
 import AboutUser from "../pages/AboutUser";
 import HomeResults from "../pages/HomeResults";
+import Diagnosis from "../pages/Diagnosis";
 
 const RouterApp = () => (
   <AuthProvider>
     <Router>
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Register />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/logros" element={<Logros />} />
         <Route path="/home" element={<HomeResults />} />
+        <Route path="/diagnosis" element={<Diagnosis />} />
+
         <Route
           path="/"
           element={

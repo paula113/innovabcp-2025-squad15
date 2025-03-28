@@ -4,15 +4,17 @@ import { Box, Button, Container, Typography } from "@mui/material";
 //import mainLogo from "../../assets/bcp-logo.png";
 import mainLogo from "../assets/bcp-logo.png";
 import mainsonLogo from "../assets/mainson-logo.png";
+import { useNavigate } from "react-router-dom";
 
 const HomeResults = () => {
+  const navigate = useNavigate();
   const respuesta = {
     negativo: "Por el momento no contamos con una oferta Pre Aprobada para tí.",
     solucion:
       "Queremos conocerte para ayudarte a mejorar tu score crediticio y puedas obtener lo mas pronto posible tu crédito hipotecario",
   };
   const handleSubmit = () => {
-    //Router.push("/")
+    navigate("/about-credit");
   };
 
   return (
