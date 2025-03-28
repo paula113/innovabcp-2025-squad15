@@ -33,6 +33,47 @@ const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#03A673', // Color de fondo
+          color: '#ffffff', // Color de texto
+          borderRadius: '50px', // Bordes redondeados
+          textTransform: 'none', // Evita que el texto esté en mayúsculas
+          padding: '16px',
+          height: '54px',
+          '&:hover': {
+            backgroundColor: '#3700b3', // Color al pasar el mouse
+          },
+        },
+      },
+    },
+    // MuiStepLabel: {
+    //   styleOverrides: {
+    //     label: {
+    //       color: 'gray', // Default label color
+    //       '&.Mui-active': {
+    //         color: 'blue', // Active step
+    //       },
+    //       '&.Mui-completed': {
+    //         color: 'green', // Completed step
+    //       },
+    //     },
+    //   },
+    // },
+    MuiStepIcon: {
+      styleOverrides: {
+        root: {
+          color: 'gray', // Default icon color
+          '&.Mui-active': {
+            color: 'blue', // Active icon
+          },
+          '&.Mui-completed': {
+            color: '#03A673', // Completed icon
+          },
+        },
+      },
+    },
   },
 });
 

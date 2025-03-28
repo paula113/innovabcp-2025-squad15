@@ -13,6 +13,7 @@ const HomeResults = () => {
     solucion:
       "Queremos conocerte para ayudarte a mejorar tu score crediticio y puedas obtener lo mas pronto posible tu crédito hipotecario",
   };
+  const navigate = useNavigate();
   const handleSubmit = () => {
     navigate("/about-credit");
   };
