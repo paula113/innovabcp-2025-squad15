@@ -78,7 +78,10 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
                     label={
                       <Stack direction="row" alignItems="center" gap={1} spacing={1}>
                         {React.cloneElement(iconEl[value], {
-                          sx: { color: selectedValue === value ? "secondary.main" : "grey.500", }, // Cambia color dinámicamente
+                          sx: { 
+                            color: selectedValue === value ? "secondary.main" : "grey.500",
+                            "&:hover": { borderColor: "secondary.main"},
+                          }, // Cambia color dinámicamente
                         })}
                         {label}
                       </Stack>
@@ -90,7 +93,8 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
                       padding: "8px",
                       backgroundColor: '#1e1e2d',
                       width: '48%',
-                      margin: '0px'
+                      margin: '0px',
+                      "&:hover": { borderColor: "secondary.main"},
                     }}
                     />
                   ))}
@@ -158,20 +162,6 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
 
             case "webProfiles":
               return (
-              //   <FormControl fullWidth align="left" variant="standard">
-              //   <FormLabel>{label}</FormLabel>
-              //   <TextField
-              //    key={name}
-              //    {...register(name, validation)}
-              //   //  label={label}
-              //    type="number"
-              //    error={!!errors[name]}
-              //    helperText={errors[name]?.message}
-              //    fullWidth
-              //   variant="standard"
-              //     InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
-              //   />
-              // </FormControl>
                 <DynamicList 
                   fields={list} 
                   register={register} 
@@ -179,7 +169,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
                   remove={remove} 
                   title="Presencia Digital" 
                   name="digitalWebs" 
-                  options={['Página web', 'Mercado en libre']} 
+                  options={['Mercado en libre', 'instagram', 'tiktok', 'Amazon']} 
                 />
               );
   

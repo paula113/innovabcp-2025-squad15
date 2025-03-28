@@ -6,28 +6,26 @@ import BusinessForm from "../Features/BusinessForm/default";
 // import UserProfile from "../Features/UserProfile/default";
 
 const AboutUser = () => {
-  const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const navigate = useNavigate();
+  // const user = JSON.parse(localStorage.getItem("user"));
 
-  const handleLogout = () => {
-    // localStorage.removeItem("user");
-    navigate("/");
-  };
+  // const handleLogout = () => {
+  //   // localStorage.removeItem("user");
+  //   navigate("/");
+  // };
 
   return (
     <MainLayout>
-      <Typography variant="h4">{`Bienvenida ${user.name || ""}`} 🎉</Typography>
-
       <BusinessForm />
 
-      <Button
+      {/* <Button
         variant="contained"
         color="secondary"
         sx={{ mt: 3 }}
         onClick={handleLogout}
       >
         Cerrar sesión
-      </Button>
+      </Button> */}
     </MainLayout>
   );
 };

@@ -38,11 +38,11 @@ export default function HorizontalLinearStepper({ stepContents, steps, showGoBac
         <StepLabel
           sx={{
             '& .MuiStepLabel-label': {
-              color: isActive ? 'blue' : isCompleted ? 'green' : 'gray', // Label color
+              color: isActive ? 'blue' : isCompleted ? '#03A673' : 'gray', // Label color
               fontWeight: isActive ? 'bold' : 'normal',
             },
             '& .MuiStepIcon-root': {
-              color: isActive ? 'blue' : isCompleted ? 'green' : 'gray', // Icon color
+              color: isActive ? 'blue' : isCompleted ? '#03A673' : 'gray', // Icon color
             },
           }}
         >
