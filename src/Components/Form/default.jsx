@@ -1,14 +1,25 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
 import { Box, TextField, Button, InputAdornment, Select, MenuItem, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Slider } from "@mui/material";
+import DynamicList from "../DinamicList/default";
+import Dropzone from "../DropoutZone/default";
 
 const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon = null, showButton = true }) => {
+  const [files, setFiles] = useState([]) 
+  
   const {
-    register,
-    handleSubmit,
+    register, 
+    handleSubmit, 
     formState: { errors },
+    control,
+    // watch
   } = useForm();
+    // Manejo de listas dinámicas dentro del formulario
+    const { fields: list, append, remove } = useFieldArray({
+      control,
+      name: "test",
+    });
 
   const getSubmitButton = () => {
     if (!showButton) return null;
@@ -19,10 +30,18 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
     )
   }
 
+  console.log(files);
+  const handleFormSubmit = (data) => {
+    
+    const formData = { ...data, files }; // Agregar los archivos a la data
+    onSubmit(formData);
+  };
+  
+
   return (
     <Box
       component="form"
-      onSubmit={showButton && handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(handleFormSubmit)}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -31,9 +50,7 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
         mb: 4,
       }}
     >
-      {fields.map(({ name, label, type, options, validation, min, max, textLimit }) => {
-        console.log(name);
-        
+      {fields.map(({ name, label, type, options, validation, min, max, textLimit }) => {        
         switch (type) {
           case "radioButton":
             return (
@@ -121,6 +138,33 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
             </FormControl>
             );
 
+            case "webProfiles":
+              return (
+              //   <FormControl fullWidth align="left" variant="standard">
+              //   <FormLabel>{label}</FormLabel>
+              //   <TextField
+              //    key={name}
+              //    {...register(name, validation)}
+              //   //  label={label}
+              //    type="number"
+              //    error={!!errors[name]}
+              //    helperText={errors[name]?.message}
+              //    fullWidth
+              //   variant="standard"
+              //     InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
+              //   />
+              // </FormControl>
+                <DynamicList 
+                  fields={list} 
+                  register={register} 
+                  append={append} 
+                  remove={remove} 
+                  title="Presencia Digital" 
+                  name="digitalWebs" 
+                  options={['Página web', 'Mercado en libre']} 
+                />
+              );
+  
           case "range":
             return (
               <Box key={name}>
@@ -166,6 +210,17 @@ const Form = ({ fields, onSubmit, buttonText = "Enviar", children = null, icon =
                 InputLabelProps={{ shrink: true }} // Hace que el label no flote dentro del input
               />
             </FormControl>
+            );
+
+            case 'dropZone':
+              return (
+                <Dropzone 
+                 files={files}
+                 setFiles={setFiles}
+                 register={register} 
+                 append={append} 
+                 remove={remove} 
+                />
             );
 
           case "text":

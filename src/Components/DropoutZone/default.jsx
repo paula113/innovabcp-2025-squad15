@@ -29,9 +29,10 @@ const Dropzone = ({ files = [], setFiles = () => {} }) => {
 
   // Actualizar la opción seleccionada en la lista de archivos
   const handleUpdateOption = (fileId, selectedOption) => {
+    console.log("🚀 ~ handleUpdateOption ~ fileId, selectedOption:", fileId, selectedOption)
     setFiles((prevFiles) =>
       prevFiles.map((file) =>
-        file.id === fileId ? { ...file, option: selectedOption } : file
+        file.id === fileId ? { ...file, option: selectedOption } :  file 
       )
     );
   };

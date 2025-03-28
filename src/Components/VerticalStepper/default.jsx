@@ -3,7 +3,7 @@ import * as React from "react";
 import { Box, Stepper, Step, StepLabel, Button, Typography } from "@mui/material";
 
 
-export default function HorizontalLinearStepper({ stepContents, steps }) {
+export default function HorizontalLinearStepper({ stepContents, steps, showGoBack }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -71,6 +71,7 @@ export default function HorizontalLinearStepper({ stepContents, steps }) {
             onNext={handleNext}
             onSkip={handleSkip}
             steps={steps}
+            showGoBack={showGoBack}
           />
         </>
       )}
@@ -91,10 +92,10 @@ const CompletionMessage = ({ onReset }) => (
 
 // ✅ Extracted component for navigation controls
 // eslint-disable-next-line no-unused-vars
-const NavigationControls = ({ activeStep, isStepOptional, onBack, onNext, onSkip, steps }) => (
+const NavigationControls = ({ activeStep, isStepOptional, onBack, onNext, onSkip, steps, showGoBack }) => (
   <Box>
     <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-      {activeStep !== steps.length - 1 && <Button color="inherit" disabled={activeStep === 0} onClick={onBack} sx={{ mr: 1 }}>
+      {showGoBack && <Button color="inherit" disabled={activeStep === 0} onClick={onBack} sx={{ mr: 1 }}>
         Atrás
       </Button>}
       <Box sx={{ flex: "1 1 auto" }} />
@@ -104,7 +105,7 @@ const NavigationControls = ({ activeStep, isStepOptional, onBack, onNext, onSkip
         </Button>
       )} */}
 
-      {activeStep !== steps.length - 1 && <Button onClick={onNext}>{activeStep === steps.length - 1 ? "Finalizar" : "Continuar"}</Button>}
+      {activeStep !== steps.length - 1  && <Button onClick={onNext}>{activeStep === steps.length - 1 ? "Finalizar" : "Continuar"}</Button>}
     </Box>
   </Box>
 );

@@ -62,12 +62,12 @@ export const formFields = [
     type: "text",
     validation: { required: "Campo obligatorio" }
   },
-  // {
-  //   name: "website",
-  //   label: "¿Tienes un página web?",
-  //   type: "url",
-  //   validation: { pattern: { value: /https?:\/\/.+/, message: "URL inválida" } }
-  // },
+  {
+    name: "webProfiles",
+    label: "Conecta tus redes",
+    type: "webProfiles",
+    // expected result: [ {name: 'Instagram', token: 'sssss'  } ]
+  },
 ];
 
 export const formFieldsSecondStep = [
@@ -77,6 +77,12 @@ export const formFieldsSecondStep = [
     type: "text",
     textLimit: '200',
     validation: { required: "Campo obligatorio" }
+  },
+  {
+    name: "files",
+    label: "sube tus arechivos",
+    type: "dropZone",
+    // expected result: [ {file: archivo.png, category: 'boleta'  } ]
   },
 ]
 

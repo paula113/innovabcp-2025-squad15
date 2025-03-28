@@ -3,7 +3,8 @@ import React from 'react'
 import { Box, TextField, IconButton, Typography, Button, FormLabel, FormControl, Select, MenuItem, FormHelperText } from "@mui/material";
 import { Add, Delete } from "@mui/icons-material";
 
-const DynamicList = ({ fields, register, append, remove, title, name, options = ['Página web', 'Mercado Libre'], errors }) => {
+const DynamicList = (props) => {
+  const { fields, register, append, remove, title, name, options = ['Página web', 'Mercado Libre'], errors } = props
 const  validation = { pattern: { value: /https?:\/\/.+/, message: "URL inválida" } };
   return (
     <Box>
