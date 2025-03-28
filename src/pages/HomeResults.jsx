@@ -7,7 +7,6 @@ import mainsonLogo from "../assets/mainson-logo.png";
 import { useNavigate } from "react-router-dom";
 
 const HomeResults = () => {
-  const navigate = useNavigate();
   const respuesta = {
     negativo: "Por el momento no contamos con una oferta Pre Aprobada para tí.",
     solucion:
